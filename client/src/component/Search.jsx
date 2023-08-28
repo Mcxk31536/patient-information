@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import "./Search.css"
 import ImSearch from '../image/search-icon.png'
 import axios from 'axios'
@@ -15,14 +15,14 @@ function Search() {
             typingSearch: sub
         })
             .then((res) => {
-                console.log("search data :", res.data);
+                // console.log("search data :", res.data);
                 setSearchdata(res.data)
             })
             .catch((err) => {
-                console.log("err : ", err)
+                // console.log("err : ", err)
             })
-        console.log(from)
-        console.log(sub)
+        // console.log(from)
+        // console.log(sub)
     }, [from, sub])
 
     return (
