@@ -15,19 +15,19 @@ function Patientninformation() {
       pagestate: pagestate
     })
       .then((res) => {
-        console.log("pagestate", pagestate)
-        console.log("Data page:", pagestate, res.data)
+        // console.log("pagestate", pagestate)
+        // console.log("Data page:", pagestate, res.data)
         setPatientlist(res.data);
       })
       .catch(err => {
-        console.log("err,cancelled")
+        // console.log("err,cancelled")
       })
 
     Axios.get('http://localhost:3000/maxpagestate_patient_information', {
     })
       .then((res) => {
         setmaxpagestate(res.data);
-        console.log("maxpagestate", maxpagestate)
+        // console.log("maxpagestate", maxpagestate)
       })
       .catch((err => console.log("err : ", err)))
     console.log("idstate", idstate)

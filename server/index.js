@@ -108,18 +108,6 @@ app.post('/Search_patient_information', (req, res) => {
         });
 });
 
-app.get('/ChartData', (req, res) => {
-    const getdatafromsql = "SELECT sex ,  COUNT(id ) AS COUNT FROM `patientinformation` GROUP BY sex;"
-    db.query(getdatafromsql, (err, result) => {
-        if (err) {
-            console.log(err);
-        } else {
-            res.send(result);
-            console.log("Result :",result)
-        }
-    });
-});
-
 app.listen('3000', () => {
     console.log("server is runnig")
 })
