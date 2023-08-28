@@ -1,0 +1,83 @@
+.patientninformation {
+    width: auto;
+    min-width: 860px;
+    min-height: 400px;
+    height: auto;
+    margin: 16px 0px 16px 0px ;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+table {
+    padding: 0;
+    border-radius: 4px;
+    background-color: rgb(253, 111, 111);
+}
+
+th {
+    text-align: center;
+    margin: 0px;
+    padding: 4px 16px 4px 16px;
+    background-color: rgb(253, 111, 111);
+    color: white;
+}
+
+td {
+    text-align: center;
+    margin: 0px;
+    padding: 8px 16px 8px 16px;
+    background-color: rgb(255, 255, 255);
+}
+
+.val-status{
+    display: inline;
+    width: auto;
+}
+
+.edit {
+    display: inline;
+    height: 24px;
+    margin-left: 4px;
+    margin-right: 4px ;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: rgb(228, 103, 103);
+    cursor: pointer;
+}
+
+.change {
+    display: inline;
+    height: 24px;
+    margin-left: 4px;
+    margin-right: 4px ;
+    border: none;
+    border-radius: 4px;
+    color: white;
+    background-color: rgb(120, 228, 103);
+    cursor: pointer;
+}
+
+.editstatusclose {
+    display: none;
+}
+
+.editstatusopen {
+    display: inline;
+    height: 22px;
+}
+
+.btn-beforepage-btn-nextpage{
+    margin: 24px auto 24px auto;
+}
+
+.btn-beforepage{
+    rotate: 180deg;
+    margin: 4px;
+}
+.btn-nextpage{
+    margin: 4px;
+}

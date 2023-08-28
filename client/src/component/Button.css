@@ -1,0 +1,33 @@
+.Div-2Button{
+    width: auto;
+    min-width: 250px;
+    height:100dvh;
+    display: flex;
+    justify-content: top;
+    align-items: center;
+    flex-direction: column;
+    background-color: rgb(253, 111, 111);
+    /* border: 1px red solid; */
+}
+
+.Cbutton {
+    width: 250px;
+    min-height: 80px;
+    height: auto;
+    color: black;
+    padding: 0px;
+    background-color: rgb(253, 111, 111);
+    color: white;
+    border-radius: 0px;
+    text-align: center;
+    text-decoration: none;
+    margin: 0px;
+    cursor: pointer;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
+}
+
+.Cbutton:hover{
+    background-color: rgb(255, 40, 40);
+}

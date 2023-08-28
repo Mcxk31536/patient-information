@@ -1,0 +1,56 @@
+.Addpatient {
+    width: 560px;
+    min-width: 860px;
+    min-height: 440px;
+    height: 100dvh;
+    margin-right: auto;
+    margin-left: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* border: 1px solid red; */
+}
+
+form > div {
+    display: grid;
+    grid-template-columns: auto auto;
+    gap: 28px 28px;
+}
+.Addpatient > form  > div > label > select,input{
+    display: block;
+    width: 170px;
+}
+
+label>p {
+    font-size: 10px;
+    color: red;  
+}
+
+input {
+    height: 24px;
+    border-radius: 4px;
+    border: 2px solid rgb(194, 194, 194);
+    padding: 2px;
+}
+
+input:focus {
+    border: 2px solid rgb(206, 0, 0);
+}
+
+select {
+    height: 30px;
+    border-radius: 4px;
+    border: 2px solid rgb(195, 195, 195);
+}
+
+.btn-submit {
+    width: 108px;
+    height: 36px;
+    border-radius: 18px;
+    border: none;
+    background-color: rgb(253, 111, 111);
+    color: white;
+    cursor: pointer;
+    margin-left: auto;
+    margin-right: auto;
+}

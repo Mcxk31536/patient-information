@@ -1,0 +1,31 @@
+body{
+  width: 100%;
+  min-width: 360px;
+  height: 100%;
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+  background-color: rgb(255, 255, 255);
+}
+
+.Navsideand-Route{
+  width: 100%;
+  min-width: 360px;
+  height: 100%;
+  height: auto;
+  padding: 0px;
+  margin: 0px;
+  background-color: rgb(255, 255, 255);
+  display: flex;
+}
+
+.RouteButton{
+  width: 100%;
+  min-width: 360px;
+}
+
+
+
+
+
+
