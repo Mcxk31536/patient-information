@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import  { useEffect, useState } from 'react'
 import Axios from 'axios'
 import './Patientninformation.css'
 
@@ -20,9 +20,9 @@ function Patientninformation() {
         setPatientlist(res.data);
       })
       .catch(err => {
-        // console.log("err,cancelled")
+        console.log("err",err)
       })
-
+      console.log("err",pagestate)
     Axios.get('http://localhost:3000/maxpagestate_patient_information', {
     })
       .then((res) => {
@@ -31,7 +31,7 @@ function Patientninformation() {
       })
       .catch((err => console.log("err : ", err)))
     console.log("idstate", idstate)
-  }, [pagestate, idstate, newstatus])
+  }, [ pagestate ,idstate, newstatus])
 
   const Open = (val) => {
     seteditprocess(() => "editstatusopen")
@@ -89,8 +89,6 @@ function Patientninformation() {
               <td > {val.firstname}</td>
               <td> {val.lastname}</td>
               <td > {val.phone}</td>
-              {/* <td > {(val.dateofbirth.split("T17:00:00.000Z"))[0]}</td> */}
-              {/* <td > {val.weightkg}</td> */}
               <td > {val.symptoms}</td>
               <td > {val.process}</td>
               <td style={{width:300}}> {val.status}
@@ -112,7 +110,7 @@ function Patientninformation() {
         })}
 
       </table>
-      <div class='btn-beforepage-btn-nextpage'>
+      <div className='btn-beforepage-btn-nextpage'>
         <button className='btn-beforepage' onClick={Clickbeforepage}>&#10148;</button>{pagestate}
         <button className='btn-nextpage' onClick={Clicknextpage}>&#10148;</button>
 

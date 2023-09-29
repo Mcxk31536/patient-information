@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react'
+/* eslint-disable react/jsx-key */
+import  { useEffect, useState } from 'react'
 import "./Search.css"
 import ImSearch from '../image/search-icon.png'
 import axios from 'axios'
@@ -19,7 +20,7 @@ function Search() {
                 setSearchdata(res.data)
             })
             .catch((err) => {
-                // console.log("err : ", err)
+                console.log("err : ", err)
             })
         // console.log(from)
         // console.log(sub)

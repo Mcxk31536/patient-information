@@ -1,12 +1,10 @@
 const express = require('express');
 const mysql = require('mysql');
 const cors = require('cors');
-const bodyParser = require('body-parser')
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(bodyParser.urlencoded({ extended: false }))
 
 const db = mysql.createConnection({
     user: "root",
@@ -46,7 +44,7 @@ app.get('/maxpagestate_patient_information', (req, res) => {
     });
 });
 
-app.post('/Add_patient_information', async (req, res) => {
+app.post('/Add_patient_information', (req, res) => {
     const values = [
         req.body.firstname,
         req.body.lastname,
@@ -61,7 +59,7 @@ app.post('/Add_patient_information', async (req, res) => {
     ]
     const sql = "INSERT INTO patientinformation(`firstname`,`lastname` , `sex` ,`phone` ,`dateofbirth`, `heightcm`,`weightkg`,`symptoms`,`process`,`status`) VALUES(?)"
     console.log(req.body)
-    await db.query(sql, [values], (result, err) => {
+    db.query(sql, [values], (result, err) => {
         if (err) return res.json(err);
         return res.json(result);
     }

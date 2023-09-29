@@ -1,13 +1,16 @@
-import React, { useEffect, useRef, useState } from 'react'
+
+import  { useEffect, useState } from 'react'
 import Axios from 'axios';
 import './Addpatient.css'
+
+import Sweetalert from 'sweetalert2'
 
 function Addpatient() {
     const [firstname, setfirstname] = useState('');
     const [lastname, setlastname] = useState('');
     const [sex , setsex]  = useState('');
     const [phone, setphone] = useState('');
-    const dateRef = useRef('');
+    const [datebirth , setdatebirth ] = useState('');
     const [heightcm, setheightcm] = useState('');
     const [weightkg, setweightkg] = useState('');
     const [symptoms, setsymptoms] = useState('');
@@ -25,7 +28,7 @@ function Addpatient() {
     const [instatus,setinstatus] = useState(<br />);
 
     useEffect(() => {
-    }, [firstname, lastname, phone, weightkg, heightcm, symptoms])
+    }, [firstname, lastname, phone, weightkg, heightcm, symptoms,datebirth])
 
     function regexCheckEnglish(text) {
         if (text.search(/^[a-zA-Z]+$/) == -1) {
@@ -41,11 +44,14 @@ function Addpatient() {
         return true;
     }
 
+    let regnum = /\d/
+    
     const typingfirstname = (character) => {
         let cha = character.slice(-1)
         if ((regexCheckEnglish(character) == true) && (character.length <= 100)) {
             setfirstname(character)
-        } else if ((character.length < 2) && (regexCheckEnglish(cha) == false)) {
+        } 
+        else if ((character.length < 2) && (regexCheckEnglish(cha) == false)) {
             setfirstname(``)
         }
     }
@@ -60,7 +66,6 @@ function Addpatient() {
     }
 
     const typingphone = (character) => {
-        let regnum = /\d/
         let cha = character.slice(-1)
         if ((character.length <= 10) && (regnum.test(cha) == true)) {
 
@@ -78,7 +83,6 @@ function Addpatient() {
     }
 
     const typingheightcm = (character) => {
-        let regnum = /\d/
         let regdot = /\./
         let cha = character.slice(-1)
         if ((character.length <= 5) && ((regnum.test(cha) == true) || (regdot.test(cha) == true))) {
@@ -95,7 +99,6 @@ function Addpatient() {
     }
 
     const typingweightkg = (character) => {
-        let regnum = /\d/
         let regdot = /\./
         let cha = character.slice(-1)
         if ((character.length <= 5) && ((regnum.test(cha) == true) || (regdot.test(cha) == true))) {
@@ -113,7 +116,6 @@ function Addpatient() {
 
     const typingsymptoms = (character) => {
         let cha = character.slice(-1)
-        let regnum = /\d/
         if ((regexCheckThai(cha) == true) || (regexCheckEnglish(cha) == true) || (regnum.test(cha) == true)) {
             setsymptoms(character)
         } else if ((character.length < 2)) {
@@ -125,8 +127,8 @@ function Addpatient() {
         e.preventDefault();
         if ((firstname != '') &&
             (lastname != '') &&
-            (phone != '') &&
-            (dateRef.current.value != '') &&
+            (phone != '') &
+            (datebirth != '') &&
             (heightcm != '') &&
             (weightkg != '') &&
             (symptoms != '') &&
@@ -140,7 +142,7 @@ function Addpatient() {
                 lastname: lastname,
                 sex:sex,
                 phone: phone,
-                date: dateRef.current.value,
+                date: datebirth,
                 heightcm: heightcm,
                 weightkg: weightkg,
                 symptoms: symptoms,
@@ -150,11 +152,27 @@ function Addpatient() {
                 .then(res => console.log("Database Message :", res.data))
                 .catch((err => console.log("err : ", err)))
             console.log("Sucess")
+            setfirstname("")
+            setlastname("")
+            setsex("")
+            setphone("")
+            setdatebirth("")
+            setheightcm("")
+            setweightkg("")
+            setsymptoms("")
+            setProcess("")
+            setstatus("")
+
+            Sweetalert.fire({
+                title: 'Success!',
+                text: 'Information added successfully.',
+                icon: 'Success'
+              })
         }
         firstname == "" ? setinfirstname(<div className='Please-Enter'>"Please enter a valid first name."</div>): setinfirstname(<br/>);
         lastname == "" ? setinlastname(<div className='Please-Enter'>"Please enter a valid last name."</div>) :setinlastname(<br/>);
         ((phone == "") || phone.length != 10) ? setinphone(<div className='Please-Enter'>"Please enter a valid a phone number."</div>) :setinphone(<br/>);
-        dateRef.current.value == "" ? setindate(<div className='Please-Enter'>"Please enter a valid date of birth."</div>) :setindate(<br/>);
+        datebirth == "" ? setindate(<div className='Please-Enter'>"Please enter a valid date of birth."</div>) :setindate(<br/>);
         heightcm == "" ? setinheightcm(<div className='Please-Enter'>"Please enter a valid height."</div>) : setinheightcm(<br/>);
         weightkg == "" ?setinweightkg(<div className='Please-Enter'>"Please enter a valid weight."</div>) : setinweightkg(<br/>);
         symptoms == "" ?setinsymptoms(<div className='Please-Enter'>"Please enter a valid symptoms."</div>) : setinsymptoms(<br/>);
@@ -205,7 +223,8 @@ function Addpatient() {
                 <label>Date of Birth <br />
                     <input
                         type="date"
-                        ref={dateRef}
+                        value={datebirth}
+                        onChange={(e) => setdatebirth(e.target.value)}
                     />
                     <p>{indate}</p>
                 </label>
